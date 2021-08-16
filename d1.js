@@ -57,10 +57,17 @@ console.log(me)
    Programmatically add to the object me an array called "skills", containing the programming languages you know right now.
 */
 
+me.Skills = ["HTML", "CSS", "Python", "JavaScript"]
+console.log("Ex. F:")
+console.log(me)
 
 /* Ex.G 
    Programmatically remove the last skill from the "skills" array inside the "me" object.
 */
+
+me.Skills.pop()
+console.log("Ex. G:")
+console.log(me)
 
 // JS Functions
 /* Ex.1
@@ -143,7 +150,6 @@ function isThisAnEmail(e) {
 console.log("Ex. 6:")
 console.log(isThisAnEmail("johnblox5@gmail.com"))
 
-
 /* Ex.7
    Write a function called "whatDayIsIt" that should return the current day of the week.
 */
@@ -176,17 +182,39 @@ console.log(whatDayIsIt());
     }
 */
 
+console.log("Ex. 8: Unfinished")
 
 /* Ex.9
    Write a function called "howManyDays" which receives a date as a parameter
    and should return the number of days passed since that date.
 */
 
+let today = new Date();
+let dateToday = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+
+function howManyDays(d) {
+  let day1 = new Date(d);
+  let day2 = new Date(dateToday);
+  let difference = Math.abs(day2-day1);
+  days = difference/(1000 * 3600 * 24)
+  return days;
+}
+console.log("Ex.9:")
+console.log(howManyDays("2021-8-12"))
 
 /* Ex.10
    Write a function called "isTodayMyBirthday" which should return true if today's your birthday, false otherwise.
 */
 
+function isTodayMyBirthday(cake) {
+  if (cake === dateToday)
+  return true;
+  else
+  return false;
+}
+
+console.log("Ex. 10:")
+console.log(isTodayMyBirthday("1989-5-22"))
 
 // JS Arrays // Objs
 // NOTE: movies array is defined at the end of this file!
@@ -208,8 +236,9 @@ function deleteProp(obj,str) {
 console.log("Ex. 11:")
 console.log(deleteProp(info, "john"))
 
-/* Ex.12 
-    Write a function called "olderMovie" which finds the oldest movie in the array provided at the end of this file.
+//I MOVED THE MOVIES ARRAY TO HERE:
+
+/* This movies array is used throughout the exercises. Please don't change it :)  
 */
 
 const movies = [
@@ -378,13 +407,38 @@ console.log(onlyInThisMillennium(movies))
     Write a function called "getMovieById" which receives an id as a parameter and returns the movie with the given id.
 */
 
+function getMovieByID(id) {
+  let index = movies.findIndex(x => x.imdbID === id);
+  let movieInfo = movies[index];
+  return movieInfo;
+}
+console.log("Ex. 16:")
+console.log(getMovieByID("tt0167260"))
+
 /* Ex.17
     Write a function called "sumAllTheYears" which returns the sum of all the years in which the movies provided have been produced.
 */
 
+let movieYears = movies.map((x => x.Year));
+let movieYearsInt = movieYears.map(function (x) { 
+  return parseInt(x, 10); 
+});
+function sumAllTheYears(arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+  return sum;
+}
+console.log("Ex.17:")
+console.log(sumAllTheYears(movieYearsInt))
+
 /* Ex.18
-    Write a function called "searchByTitle" which receives a string as a parameter and returns all the movies which contain that string in the title.
+    Write a function called "searchByTitle" which receives a string as a parameter 
+    and returns all the movies which contain that string in the title.
 */
+
+console.log("Ex. 18: Unfinished")
 
 /* Ex.19
     Write a function called "searchAndDivide" which receives a string as a parameter and returns an object;
@@ -392,37 +446,19 @@ console.log(onlyInThisMillennium(movies))
     and another array "unmatch" with all the remaining ones.
 */
 
+console.log("Ex. 19: Unfinished")
+
 /* Ex.20
-   Write a function called "removeIndex" which receives a number as a parameter and returns the movies array without the element in the given position.
+   Write a function called "removeIndex" which receives a number as a parameter and 
+   returns the movies array without the element in the given position.
 */
 
-// [EXTRAS] JS Advanced
+function removeIndex(int) {
+  delete movies[int];
+  return movies;
+}
 
-/* Ex.21
-  Create a function called "halfTree" which receives a number as a parameter and builds an "*" half tree with the given height.
-  Example:
-  halfTree(3)
-  *
-  **
-  ***
-*/
-
-/* Ex.22 
-  Create a function called "tree" which receives a number as a parameter and builds an "*" tree with the given height.
-  Example: 
-  tree(3)
-    *  
-   *** 
-  *****
-*/
-
-/* Ex.23
-  Create a function called "isItPrime" that receives a number as a parameter and returns true if the given number is a prime number.
-*/
-
-/* This movies array is used throughout the exercises. Please don't change it :)  
-*/
+console.log("Ex. 20:")
+console.log(removeIndex(2))
 
 
-  
-  
